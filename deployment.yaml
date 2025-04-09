@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-scraper
+  template:
+    metadata:
+      labels:
+        app: book-scraper
+    spec:
+      containers:
+      - name: book-scraper
+        image: book-scraper:latest  # Use your local image
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
